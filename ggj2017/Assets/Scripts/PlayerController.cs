@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,12 +21,20 @@ public class PlayerController : MonoBehaviour
 
     private float mBoostCharge = 0f;
     public bool BoostReady { get { return mBoostCharge == 1f; } }
+
     public Color BoostColor { get { return BoostReady ? Color.green : Color.white; } }
+
     public string BoostString { get { return string.Format("{0:P0}", System.Math.Round(mBoostCharge, 2)); } }
     // Use this for initialization
 
+    private GameObject G_InfluencedPerson;
+    private List<GameObject> mInfluencedPeople;
+    private List<GameObject> mAOEInfluencedPeople;
+
     private void Start()
     {
+        mInfluencedPeople = new List<GameObject>();
+        mAOEInfluencedPeople = new List<GameObject>();
         mMovementDir = new Vector3();
         mLookDir = new Vector3();
         mCharController = GetComponent<CharacterController>();
@@ -96,11 +105,51 @@ public class PlayerController : MonoBehaviour
         mBoostCharge = Mathf.Min(1f, mBoostCharge + kBoostRechargeRate);
 
         #endregion Regen
+
+        #region DEBUG
+
+        foreach (GameObject go in mInfluencedPeople)
+        {
+            Debug.DrawLine(transform.position + Vector3.up, go.transform.position + Vector3.up, Color.green);
+        }
+        foreach (GameObject go in mAOEInfluencedPeople)
+        {
+            Debug.DrawLine(transform.position, go.transform.position, Color.blue);
+        }
+
+        #endregion DEBUG
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Person"))
+        {
+            Debug.Log("HI");
+            mInfluencedPeople.Add(other.gameObject);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        mInfluencedPeople.Remove(other.gameObject);
     }
 
     private void DoBoost()
     {
         Debug.Log("Kapow");
         mBoostCharge = 0f;
+    }
+
+    internal void RemoveTrackedAOE(GameObject gameObject)
+    {
+        mAOEInfluencedPeople.Remove(gameObject);
+    }
+
+    internal void AddTrackedAOE(GameObject gameObject)
+    {
+        if (gameObject.CompareTag("Person"))
+        {
+            mAOEInfluencedPeople.Add(gameObject);
+        }
     }
 }
