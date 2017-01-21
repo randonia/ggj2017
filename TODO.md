@@ -27,6 +27,8 @@ Environment
     - Walls
     - Streets
     - Shrubs
+    - Lightposts
+    - Fences
     - Other stuff
 UI
   + Menu Flow
