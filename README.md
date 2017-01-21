@@ -1,8 +1,10 @@
 # ggj2017 #
 Global Game Jam 2017
 
-Theme - Waves
+Theme - *Waves*
 
 
 # Contributors #
-    Ryan Andonian - @zambini845
+ Ryan Andonian - [@zambini845][1]
+
+[1]: https://twitter.com/Zambini845
