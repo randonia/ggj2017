@@ -1,7 +1,9 @@
 # TODO LIST #
 Gameplay
   + Police Interaction
+    - Alarm/Siren rotating lights
     - Basic Police (straight line)
+      - Add dust trail effect to police movement (particles)
     - RIOT Police (wall)
     - SWAT Van (concentric circles
   + Player Interaction

@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private enum PlayerState
+    {
+        Wait,
+        Playing,
+        Detained
+    }
+
+    private PlayerState mState;
     private CharacterController mCharController;
 
     private Vector3 mMovementDir;
@@ -33,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        mState = PlayerState.Playing;
         mInfluencedPeople = new List<GameObject>();
         mAOEInfluencedPeople = new List<GameObject>();
         mMovementDir = new Vector3();
@@ -43,6 +52,34 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     private void Update()
+    {
+        switch (mState)
+        {
+            case PlayerState.Playing:
+                PlayingTick();
+                break;
+            case PlayerState.Detained:
+                break;
+            case PlayerState.Wait:
+                // Waiting for the game to start
+                break;
+        }
+
+        #region DEBUG
+
+        foreach (GameObject go in mInfluencedPeople)
+        {
+            Debug.DrawLine(transform.position + Vector3.up, go.transform.position + Vector3.up, Color.green);
+        }
+        foreach (GameObject go in mAOEInfluencedPeople)
+        {
+            Debug.DrawLine(transform.position, go.transform.position, Color.blue);
+        }
+
+        #endregion DEBUG
+    }
+
+    private void PlayingTick()
     {
         #region Movement
 
@@ -105,19 +142,16 @@ public class PlayerController : MonoBehaviour
         mBoostCharge = Mathf.Min(1f, mBoostCharge + kBoostRechargeRate);
 
         #endregion Regen
+    }
 
-        #region DEBUG
-
-        foreach (GameObject go in mInfluencedPeople)
+    internal void Detain(GameObject source)
+    {
+        mState = PlayerState.Detained;
+        foreach (Collider collider in transform.GetComponentsInChildren<Collider>())
         {
-            Debug.DrawLine(transform.position + Vector3.up, go.transform.position + Vector3.up, Color.green);
+            collider.enabled = false;
         }
-        foreach (GameObject go in mAOEInfluencedPeople)
-        {
-            Debug.DrawLine(transform.position, go.transform.position, Color.blue);
-        }
-
-        #endregion DEBUG
+        GetComponent<CharacterController>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)

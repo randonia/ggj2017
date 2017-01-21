@@ -55,9 +55,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4860293278644172}
   - component: {fileID: 65835092488561688}
+  - component: {fileID: 114795352756446434}
+  - component: {fileID: 143428304768714170}
+  - component: {fileID: 65439243171204814}
   m_Layer: 0
-  m_Name: Police
-  m_TagString: Untagged
+  m_Name: PoliceBasic
+  m_TagString: Police
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +182,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1852648093112616}
   m_Mesh: {fileID: 4300000, guid: d972f9ab7f0e6a74b8ad3bd02b3173dd, type: 3}
+--- !u!65 &65439243171204814
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1966802389083252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 5, z: 1}
+  m_Center: {x: 0, y: 2.5, z: 1.6}
 --- !u!65 &65835092488561688
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -208,3 +223,31 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114795352756446434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1966802389083252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb79c9b94cdc72468a8ff4c0db9f46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!143 &143428304768714170
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1966802389083252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 4.827842
+  m_Radius: 1
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 2.44, z: 0}
