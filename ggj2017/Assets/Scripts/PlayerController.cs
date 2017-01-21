@@ -136,7 +136,6 @@ public class PlayerController : MonoBehaviour
 
     private void DoBoost()
     {
-        Debug.Log("Kapow");
         mBoostCharge = 0f;
     }
 

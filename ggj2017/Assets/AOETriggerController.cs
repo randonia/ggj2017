@@ -22,13 +22,11 @@ public class AOETriggerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("HI2U " + other.gameObject.name);
         mOwnerController.AddTrackedAOE(other.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("BAI2U " + other.gameObject.name);
         mOwnerController.RemoveTrackedAOE(other.gameObject);
     }
 }
