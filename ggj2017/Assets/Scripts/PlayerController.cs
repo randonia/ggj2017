@@ -15,10 +15,13 @@ public class PlayerController : MonoBehaviour
     public float SprintVal { get { return mSprint / kMaxSprint; } }
 
     public const float kSprintRate = 0.01f;
-
-    // Rate at which sprint is recovered
     public const float kSprintRecovery = 0.003f;
+    public const float kBoostRechargeRate = 0.00005f;
 
+    private float mBoostCharge = 0f;
+    public bool BoostReady { get { return mBoostCharge == 1f; } }
+    public Color BoostColor { get { return BoostReady ? Color.green : Color.white; } }
+    public string BoostString { get { return string.Format("{0:P0}", System.Math.Round(mBoostCharge, 2)); } }
     // Use this for initialization
 
     private void Start()
@@ -32,6 +35,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        #region Movement
+
         Debug.DrawRay(transform.position, transform.forward * 10, Color.green);
         Vector3 mMovementDir = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
@@ -74,5 +79,28 @@ public class PlayerController : MonoBehaviour
             mSprint = Mathf.Min(1.0f, mSprint + kSprintRecovery);
         }
         mCharController.SimpleMove(mMovementDir * moveSpeed);
+
+        #endregion Movement
+
+        #region "Combat"
+
+        if (Input.GetKeyDown(KeyCode.Space) && BoostReady)
+        {
+            DoBoost();
+        }
+
+        #endregion "Combat"
+
+        #region Regen
+
+        mBoostCharge = Mathf.Min(1f, mBoostCharge + kBoostRechargeRate);
+
+        #endregion Regen
+    }
+
+    private void DoBoost()
+    {
+        Debug.Log("Kapow");
+        mBoostCharge = 0f;
     }
 }
