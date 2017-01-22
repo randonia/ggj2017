@@ -13,9 +13,9 @@ public class PersonController : MonoBehaviour
 
     private PersonState mState;
     public bool isDetained { get { return mState == PersonState.Detained; } }
-    public float Conversion { get { return mConversionFactor; } }
+
     public string ConversionString { get { return string.Format("{0:P0}", Conversion); } }
-    private float mConversionFactor;
+    public float Conversion;
 
     public Material M_NormalPerson;
     public Material M_ConvertedPerson;
@@ -23,7 +23,7 @@ public class PersonController : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        mConversionFactor = 0;
+        Conversion = 0;
         Debug.Assert(M_ConvertedPerson != null);
         Debug.Assert(M_NormalPerson != null);
     }
@@ -38,7 +38,7 @@ public class PersonController : MonoBehaviour
         if (source.CompareTag("Player"))
         {
             Debug.Log("Converted by Player");
-            mConversionFactor = Mathf.Min(mConversionFactor + 0.25f, 1f);
+            Conversion = Mathf.Min(Conversion + 0.25f, 1f);
         }
         if (Conversion == 1f && mState == PersonState.Idle)
         {

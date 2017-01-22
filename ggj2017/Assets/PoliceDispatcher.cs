@@ -63,7 +63,8 @@ public class PoliceDispatcher : MonoBehaviour
             }
             newThing.transform.position = path.nodes[0];
             Vector3 dir = (path.nodes[1] - path.nodes[0]).normalized;
-            newThing.GetComponent<PoliceBasicController>().StartMoving(dir);
+            PoliceBasicController pbc = newThing.GetComponent<PoliceBasicController>();
+            pbc.MoveDirection = dir;
             mLastSpawn = Time.time;
         }
     }

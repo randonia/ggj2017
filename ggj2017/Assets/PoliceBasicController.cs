@@ -13,7 +13,7 @@ public class PoliceBasicController : MonoBehaviour
     }
 
     private PoliceState mState;
-    private Vector3 mMoveDirection;
+    private Vector3 mMoveDirection = Vector3.zero;
     private CharacterController mController;
 
     private GameObject mDetainee;
@@ -21,6 +21,7 @@ public class PoliceBasicController : MonoBehaviour
     private GameObject[] mDetainPoints;
     private Transform mCapturePoint;
     private GameObject mClosestDetainmentPoint;
+    public Vector3 MoveDirection { get { return mMoveDirection; } set { this.mMoveDirection = value; } }
 
     // Use this for initialization
     private void Start()
@@ -28,8 +29,8 @@ public class PoliceBasicController : MonoBehaviour
         mState = PoliceState.Idle;
         mController = GetComponent<CharacterController>();
         Debug.Assert(mController != null);
-        Debug.Log("DEBUG MOVING TO PLAYER");
-        StartMoving(GameObject.Find("Player").transform.position - transform.position);
+        //Debug.Log("DEBUG MOVING TO PLAYER");
+        //StartMoving(GameObject.Find("Player").transform.position - transform.position);
         foreach (Transform child in GetComponentsInChildren<Transform>())
         {
             if (child.name == "CapturePoint")
@@ -46,12 +47,23 @@ public class PoliceBasicController : MonoBehaviour
     {
         switch (mState)
         {
+            case PoliceState.Idle:
+                IdleTick();
+                break;
             case PoliceState.Moving:
                 MoveTick();
                 break;
             case PoliceState.Detaining:
                 DetainTick();
                 break;
+        }
+    }
+
+    private void IdleTick()
+    {
+        if (mMoveDirection != Vector3.zero)
+        {
+            StartMoving(mMoveDirection);
         }
     }
 
@@ -110,7 +122,21 @@ public class PoliceBasicController : MonoBehaviour
                 break;
             case "Person":
                 PersonController pc = mDetainee.GetComponent<PersonController>();
-                pc.Detain(gameObject);
+                if (pc.Conversion > 0)
+                {
+                    pc.Detain(gameObject);
+                }
+                else
+                {
+                    foreach (Collider policeCollider in transform.GetComponentsInChildren<Collider>())
+                    {
+                        foreach (Collider personCollider in other.transform.GetComponentsInChildren<Collider>())
+                        {
+                            Physics.IgnoreCollision(policeCollider, personCollider);
+                        }
+                    }
+                    return;
+                }
                 break;
         }
         foreach (Collider collider in transform.GetComponentsInChildren<Collider>())
@@ -135,6 +161,11 @@ public class PoliceBasicController : MonoBehaviour
             }
         }
         mState = PoliceState.Detaining;
+    }
+
+    private void OnDrawGizmos()
+    {
+        TextGizmo.Instance.DrawText(transform.position, string.Format("{0}", mState.ToString()));
     }
 
     public void StartMoving(Vector3 direction)
