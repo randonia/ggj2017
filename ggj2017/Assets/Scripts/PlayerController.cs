@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource[] WalkingSounds;
     private float mLastCharacterMoveTime = 0.0f;
     public AudioSource[] BoostSounds;
+    public AudioSource[] TalkSounds;
+    private float mLastCharacterTalkTime = 0.0f;
 
     private float mSprint = 1;
     public const float kMaxSprint = 1;
@@ -207,6 +209,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.J))
         {
             mFirebreather.Play();
+
+            if (Time.time > mLastCharacterTalkTime + 0.25f) {
+                mLastCharacterTalkTime = Time.time;
+                TalkSounds[new System.Random().Next(TalkSounds.Length)].Play();
+            }
+
             // Try to convert everyone in your immediate effect
             foreach (GameObject conversionTarget in mInfluencedPeople)
             {
