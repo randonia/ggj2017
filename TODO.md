@@ -30,7 +30,7 @@ Environment
     - ~Streets~
     - ~Shrubs~
     - ~Lightposts~
-    - Fences
+    - ~Fences~
     - Other stuff
 UI
   + Menu Flow
