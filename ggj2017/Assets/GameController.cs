@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         Vector3 sprintSliderScale = UI_SprintSlider.transform.localScale;
-        sprintSliderScale.x = Mathf.Max(0f, mPlayer.SprintVal);
+        sprintSliderScale.x = Mathf.Max(0.02f, mPlayer.SprintVal);
         UI_SprintSlider.transform.localScale = sprintSliderScale;
     }
 
