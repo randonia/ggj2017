@@ -53,7 +53,7 @@ Foley
     - ~~funk bomb you drop which increases influence~~
     - ~~sound when you get caught~~
     - ~~talking to someone~~
-    - wall of cops marching sound
+    - ~~wall of cops marching sound~~
   + Stretch goal
     - clubbing
     - car driving
