@@ -20,7 +20,6 @@ public class PoliceDispatcher : MonoBehaviour
 
     private iTweenPath[] mPaths;
     private float mLastSpawn;
-    public string DebugText;
 
     /// <summary>
     /// To add more spawn point/directions:
@@ -51,7 +50,6 @@ public class PoliceDispatcher : MonoBehaviour
         {
             iTweenPath path = RandomPath();
             GameObject newThing = null;
-            DebugText = DebugText + "\n" + path.pathName;
             switch (path.pathName)
             {
                 case "basic":
