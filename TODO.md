@@ -2,13 +2,15 @@
 Gameplay
   + Police Interaction
     - Alarm/Siren rotating lights
-    - Basic Police (straight line)
+    - ~~Basic Police (straight line)~~
       - Add dust trail effect to police movement (particles)
     - RIOT Police (wall)
     - SWAT Van (concentric circles
+    - Police Capture people you've not completely converted
   + Player Interaction
     - Converting People
-    - AOE Blast
+      - ~~Close quarters~~
+      - AOE Blast
     - Smokescreen?
   + Person Interaction
     - Base FSM

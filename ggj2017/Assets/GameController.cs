@@ -4,10 +4,25 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public enum GameState
+    {
+        StartMenu,
+        Playing,
+        EndGame
+    }
+
+    public GameState State = GameState.StartMenu;
     public GameObject G_Player;
     private PlayerController mPlayer;
     public GameObject G_UI_Root;
     public GameObject UI_SprintSlider;
+
+    public float StartTime;
+
+    public float GameTime { get { return Time.time - StartTime; } }
+    public int GameSeconds { get { return ((int)GameTime) % 60; } }
+    public int GameMinutes { get { return ((int)GameTime) / 60; } }
+    public string GameTimeString { get { return string.Format("{0}:{1:D2}", GameMinutes, (int)GameTime); } }
 
     // Use this for initialization
     private void Start()
@@ -18,6 +33,7 @@ public class GameController : MonoBehaviour
         G_UI_Root.SetActive(true);
         mPlayer = G_Player.GetComponent<PlayerController>();
         Debug.Assert(mPlayer != null);
+        StartTime = Time.time;
     }
 
     // Update is called once per frame
