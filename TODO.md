@@ -25,11 +25,11 @@ Gameplay
 Environment
   + Level design
   + Level Assets
-    - Trees
-    - Walls
-    - Streets
-    - Shrubs
-    - Lightposts
+    - ~Trees~
+    - ~Walls~
+    - ~Streets~
+    - ~Shrubs~
+    - ~Lightposts~
     - Fences
     - Other stuff
 UI
