@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public GameObject mAOESphere;
     public GameObject G_Firebreathing;
     private ParticleSystem mFirebreather;
-    private Vector3 mMovementDir;
     private Vector3 mLookDir;
     private const float kTurnSpeed = 0.05f;
     public AudioSource[] WalkingSounds;
@@ -34,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public const float kSprintRate = 0.01f;
     public const float kSprintRecovery = 0.003f;
-    public const float kBoostRechargeRate = 0.00005f;
+    public const float kBoostRechargeRate = 0.0001f;
 
     private float mBoostCharge = 0f;
     public bool BoostReady { get { return mBoostCharge == 1f; } }
@@ -56,7 +55,6 @@ public class PlayerController : MonoBehaviour
         mInfluencedPeople = new List<GameObject>();
         mAOEInfluencedPeople = new List<GameObject>();
         mCleanupStack = new Stack<GameObject>();
-        mMovementDir = new Vector3();
         mLookDir = new Vector3();
         mCharController = GetComponent<CharacterController>();
         Debug.Assert(mCharController != null);
@@ -137,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
         #endregion DEBUG
     }
-        
+
     private void PlayingTick()
     {
         #region Movement
@@ -161,8 +159,10 @@ public class PlayerController : MonoBehaviour
             mMovementDir.x -= 1.0f;
         }
 
-        if (mMovementDir.magnitude >= 0.1f) {
-            if (Time.time > mLastCharacterMoveTime + 0.35f) {
+        if (mMovementDir.magnitude >= 0.1f)
+        {
+            if (Time.time > mLastCharacterMoveTime + 0.35f)
+            {
                 mLastCharacterMoveTime = Time.time;
                 // Play walkikng sound at random
                 WalkingSounds[new System.Random().Next(WalkingSounds.Length)].Play();
@@ -210,7 +210,8 @@ public class PlayerController : MonoBehaviour
         {
             mFirebreather.Play();
 
-            if (Time.time > mLastCharacterTalkTime + 0.25f) {
+            if (Time.time > mLastCharacterTalkTime + 0.25f)
+            {
                 mLastCharacterTalkTime = Time.time;
                 TalkSounds[new System.Random().Next(TalkSounds.Length)].Play();
             }

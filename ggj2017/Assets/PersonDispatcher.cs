@@ -34,6 +34,23 @@ public class PersonDispatcher : MonoBehaviour
         {
             return;
         }
+        int numExistingPersons = GameObject.FindGameObjectsWithTag("Person").Length;
+        if (numExistingPersons < 10)
+        {
+            SpawnRate = PersonSpawnRates.RIOT;
+        }
+        else if (numExistingPersons < 20)
+        {
+            SpawnRate = PersonSpawnRates.HIGH;
+        }
+        else if (numExistingPersons < 40)
+        {
+            SpawnRate = PersonSpawnRates.MEDIUM;
+        }
+        else
+        {
+            SpawnRate = PersonSpawnRates.LOW;
+        }
         if (mLastSpawnTime + (int)SpawnRate < Time.time)
         {
             SpawnPerson();
@@ -45,6 +62,6 @@ public class PersonDispatcher : MonoBehaviour
     {
         Vector3 spawnPoint = mSpawnPoints.nodes[UnityEngine.Random.Range(0, mSpawnPoints.nodes.Count)];
         GameObject newPerson = Instantiate(P_Person);
-        P_Person.transform.position = spawnPoint;
+        newPerson.transform.position = spawnPoint;
     }
 }

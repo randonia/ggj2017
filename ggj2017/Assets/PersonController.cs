@@ -21,7 +21,6 @@ public class PersonController : MonoBehaviour
     public Material M_ConvertedPerson;
     private Vector3 mTargetDestination;
     private CharacterController mCharacterController;
-    private float mMoveSpeed;
 
     // Use this for initialization
     private void Start()
@@ -32,7 +31,6 @@ public class PersonController : MonoBehaviour
         Debug.Assert(M_NormalPerson != null);
         mCharacterController = GetComponent<CharacterController>();
         Debug.Assert(mCharacterController != null);
-        mMoveSpeed = UnityEngine.Random.Range(1f, 3f);
     }
 
     // Update is called once per frame
@@ -119,7 +117,7 @@ public class PersonController : MonoBehaviour
         if (source.CompareTag("Player"))
         {
             Debug.Log("Converted by Player");
-            Conversion = Mathf.Min(Conversion + 0.01f, 1f);
+            Conversion = Mathf.Min(Conversion + 0.05f, 1f);
         }
         ConversionCheck();
     }

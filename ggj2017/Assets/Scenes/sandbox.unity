@@ -14830,10 +14830,10 @@ MonoBehaviour:
   pathColor: {r: 0.5808823, g: 0.5808823, b: 0.5808823, a: 1}
   nodes:
   - {x: -46.353256, y: 0, z: -9.136009}
-  - {x: -47.963608, y: 0, z: 106.53487}
-  - {x: 51.085285, y: 0, z: 116.36178}
-  - {x: 53, y: 0, z: 70}
-  - {x: 49, y: 0, z: -6}
+  - {x: -43.963608, y: 0, z: 102.53487}
+  - {x: 41.085285, y: 0, z: 108.36178}
+  - {x: 45, y: 0, z: 69}
+  - {x: 43, y: 0, z: -5}
   - {x: 14, y: 0, z: -43}
   - {x: -34, y: 0, z: -40}
   nodeCount: 7
@@ -14847,7 +14847,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1493551828}
   m_LocalRotation: {x: -0.026966901, y: 0.83202887, z: 0.04060402, w: 0.55258673}
-  m_LocalPosition: {x: 37, y: 0, z: -15}
+  m_LocalPosition: {x: 1, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

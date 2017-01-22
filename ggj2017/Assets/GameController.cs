@@ -86,22 +86,18 @@ public class GameController : MonoBehaviour
                         case 0:
                             // Switch to low
                             mPoliceDispatcher.SpawnRate = PoliceDispatcher.SpawnRates.LOW;
-                            mPersonDispatcher.SpawnRate = PersonDispatcher.PersonSpawnRates.LOW;
                             break;
                         case 1:
                             // Switch to medium
                             mPoliceDispatcher.SpawnRate = PoliceDispatcher.SpawnRates.MEDIUM;
-                            mPersonDispatcher.SpawnRate = PersonDispatcher.PersonSpawnRates.MEDIUM;
                             break;
                         case 2:
                             // switch to high
                             mPoliceDispatcher.SpawnRate = PoliceDispatcher.SpawnRates.HIGH;
-                            mPersonDispatcher.SpawnRate = PersonDispatcher.PersonSpawnRates.HIGH;
                             break;
                         case 3:
                             // switch to RIOT
                             mPoliceDispatcher.SpawnRate = PoliceDispatcher.SpawnRates.HYPE;
-                            mPersonDispatcher.SpawnRate = PersonDispatcher.PersonSpawnRates.RIOT;
                             break;
                     }
 
