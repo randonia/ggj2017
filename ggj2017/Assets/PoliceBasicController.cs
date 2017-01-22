@@ -106,8 +106,18 @@ public class PoliceBasicController : MonoBehaviour
     {
         if (mState != PoliceState.Detaining)
         {
-            if (other.CompareTag("Player") || other.CompareTag("Person"))
+            bool isPlayer = other.CompareTag("Player");
+            bool isPerson = other.CompareTag("Person");
+            if (isPerson || isPlayer)
             {
+                if (isPerson)
+                {
+                    PersonController pc = other.GetComponent<PersonController>();
+                    if (pc == null || pc.Conversion < 1f)
+                    {
+                        return;
+                    }
+                }
                 Debug.Log("Police interaction. Detaining: " + other.gameObject.name);
                 Detain(other.gameObject);
             }
