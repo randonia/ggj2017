@@ -135,6 +135,19 @@ public class PlayerController : MonoBehaviour
             DoBoost();
         }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            // Try to convert everyone in your immediate effect
+            foreach (GameObject conversionTarget in mInfluencedPeople)
+            {
+                PersonController pc = conversionTarget.GetComponent<PersonController>();
+                if (pc != null)
+                {
+                    pc.BeginConvert(gameObject);
+                }
+            }
+        }
+
         #endregion "Combat"
 
         #region Regen

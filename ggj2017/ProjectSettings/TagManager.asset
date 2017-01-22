@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Person
   - Police
+  - DetainPoint
   layers:
   - Default
   - TransparentFX

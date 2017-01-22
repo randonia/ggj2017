@@ -60,11 +60,12 @@ public class PoliceBasicController : MonoBehaviour
         switch (other.tag)
         {
             case "Player":
-                PlayerController personController = mDetainee.GetComponent<PlayerController>();
-                personController.Detain(gameObject);
+                PlayerController plrc = mDetainee.GetComponent<PlayerController>();
+                plrc.Detain(gameObject);
                 break;
             case "Person":
-
+                PersonController pc = mDetainee.GetComponent<PersonController>();
+                pc.Detain(gameObject);
                 break;
         }
         foreach (Collider collider in transform.GetComponentsInChildren<Collider>())
