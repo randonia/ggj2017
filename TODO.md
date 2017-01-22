@@ -45,8 +45,8 @@ UI
 
 Foley
   + Necessary
-    - footsteps
-    - grunt when getting grabbed by cop
+    - ~~footsteps~~
+    - ~~grunt when getting grabbed by cop~~
     - something that lets you know a police van is coming
     - something that lets you know that a police van is on screen
     - person converted to your side
