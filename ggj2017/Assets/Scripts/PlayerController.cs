@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private const float kTurnSpeed = 0.05f;
     public AudioSource[] WalkingSounds;
     private float mLastCharacterMoveTime = 0.0f;
+    public AudioSource[] BoostSounds;
 
     private float mSprint = 1;
     public const float kMaxSprint = 1;
@@ -263,6 +264,7 @@ public class PlayerController : MonoBehaviour
 
     private void DoBoost()
     {
+        BoostSounds[new System.Random().Next(BoostSounds.Length)].Play();
         mMegaphoneController.gameObject.SetActive(true);
         mMegaphoneController.Begin();
         mMegaphoneController.G_AOESphere = mAOESphere;
