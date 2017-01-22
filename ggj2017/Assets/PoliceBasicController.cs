@@ -114,6 +114,7 @@ public class PoliceBasicController : MonoBehaviour
     private void MoveTick()
     {
         mController.SimpleMove(mMoveDirection * kPoliceSpeed);
+
         transform.rotation = Quaternion.LookRotation(mMoveDirection);
         // See if we're near the end
         if ((TargetDestination - transform.position).sqrMagnitude < 4f)
@@ -121,6 +122,7 @@ public class PoliceBasicController : MonoBehaviour
             // Deleted
             Destroy(gameObject);
         }
+        mMoveDirection = (TargetDestination - transform.position).normalized;
     }
 
     private void OnTriggerEnter(Collider other)

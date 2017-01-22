@@ -9546,6 +9546,9 @@ MonoBehaviour:
   G_UI_Root: {fileID: 1453562425}
   UI_SprintSlider: {fileID: 1671787203}
   G_AudioController: {fileID: 254685646}
+  G_PoliceDispatcher: {fileID: 1502911446}
+  G_PersonDispatcher: {fileID: 1493551828}
+  PhaseChangeRate: 20
 --- !u!1001 &933956319
 Prefab:
   m_ObjectHideFlags: 0
@@ -14809,7 +14812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45423bee129c707438b8797f5b389605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnRate: 5
+  SpawnRate: 6
   running: 0
   P_Person: {fileID: 1035757453749460, guid: 7cf40e23ed43c4149be0b2fc6d95416d, type: 2}
 --- !u!114 &1493551830
@@ -14826,10 +14829,14 @@ MonoBehaviour:
   pathName: PersonSpawnPoints
   pathColor: {r: 0.5808823, g: 0.5808823, b: 0.5808823, a: 1}
   nodes:
-  - {x: -60.353256, y: 0, z: -36.13601}
-  - {x: -0.96360683, y: 0, z: -36.465137}
-  - {x: 53.085285, y: 0, z: -36.63822}
-  nodeCount: 3
+  - {x: -46.353256, y: 0, z: -9.136009}
+  - {x: -47.963608, y: 0, z: 106.53487}
+  - {x: 51.085285, y: 0, z: 116.36178}
+  - {x: 53, y: 0, z: 70}
+  - {x: 49, y: 0, z: -6}
+  - {x: 14, y: 0, z: -43}
+  - {x: -34, y: 0, z: -40}
+  nodeCount: 7
   initialized: 1
   initialName: New Path 1
   pathVisible: 1
@@ -14840,7 +14847,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1493551828}
   m_LocalRotation: {x: -0.026966901, y: 0.83202887, z: 0.04060402, w: 0.55258673}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 37, y: 0, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -5,9 +5,17 @@ using UnityEngine;
 
 public class PersonDispatcher : MonoBehaviour
 {
+    public enum PersonSpawnRates
+    {
+        LOW = 6,
+        MEDIUM = 3,
+        HIGH = 2,
+        RIOT = 1
+    }
+
     private iTweenPath mSpawnPoints;
     private float mLastSpawnTime;
-    public float SpawnRate = 5f;
+    public PersonSpawnRates SpawnRate = PersonSpawnRates.LOW;
     public bool running = false;
     public GameObject P_Person;
 
@@ -26,7 +34,7 @@ public class PersonDispatcher : MonoBehaviour
         {
             return;
         }
-        if (mLastSpawnTime + SpawnRate < Time.time)
+        if (mLastSpawnTime + (int)SpawnRate < Time.time)
         {
             SpawnPerson();
             mLastSpawnTime = Time.time;
