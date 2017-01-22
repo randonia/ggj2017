@@ -25,6 +25,11 @@ Gameplay
 Environment
   + Level design
   + Level Assets
+    - ~Player~
+    - ~Unconverted Other~
+    - ~Converted Other~
+    - ~Cop~
+    - ~Swat Van~
     - ~Trees~
     - ~Walls~
     - ~Streets~
