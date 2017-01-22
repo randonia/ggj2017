@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
 
     private PlayerState mState;
     private CharacterController mCharController;
-
+    private MegaphoneController mMegaphoneController;
+    public GameObject mAOESphere;
     private Vector3 mMovementDir;
     private Vector3 mLookDir;
     private const float kTurnSpeed = 0.05f;
@@ -50,7 +51,11 @@ public class PlayerController : MonoBehaviour
         mMovementDir = new Vector3();
         mLookDir = new Vector3();
         mCharController = GetComponent<CharacterController>();
-        Debug.Assert(mCharController != null, "Player needs CharacterController!");
+        Debug.Assert(mCharController != null);
+        mMegaphoneController = GetComponentInChildren<MegaphoneController>();
+        mMegaphoneController.gameObject.SetActive(false);
+        Debug.Assert(mMegaphoneController != null);
+        Debug.Assert(mAOESphere != null);
     }
 
     // Update is called once per frame
@@ -168,6 +173,10 @@ public class PlayerController : MonoBehaviour
 
         #region "Combat"
 
+        if (BoostReady)
+        {
+            BoostReadyTick();
+        }
         if (Input.GetKeyDown(KeyCode.Space) && BoostReady)
         {
             DoBoost();
@@ -190,9 +199,23 @@ public class PlayerController : MonoBehaviour
 
         #region Regen
 
+        if (Input.GetKey(KeyCode.R))
+        {
+            mBoostCharge = 1f;
+        }
         mBoostCharge = Mathf.Min(1f, mBoostCharge + kBoostRechargeRate);
 
         #endregion Regen
+    }
+
+    private void BoostReadyTick()
+    {
+        if (!mAOESphere.activeSelf)
+        {
+            mAOESphere.SetActive(true);
+        }
+        mAOESphere.transform.Rotate(mAOESphere.transform.up, 5f);
+        mAOESphere.GetComponent<MeshRenderer>().materials[0].color = Color.Lerp(Color.red, Color.blue, Mathf.Sin(Time.time));
     }
 
     internal void Detain(GameObject source)
@@ -220,7 +243,23 @@ public class PlayerController : MonoBehaviour
 
     private void DoBoost()
     {
+        mMegaphoneController.gameObject.SetActive(true);
+        mMegaphoneController.Begin();
+        mMegaphoneController.G_AOESphere = mAOESphere;
         mBoostCharge = 0f;
+        foreach (GameObject influencedPerson in mAOEInfluencedPeople)
+        {
+            if (influencedPerson == null)
+            {
+                continue;
+            }
+            PersonController pc = influencedPerson.GetComponent<PersonController>();
+            if (pc == null)
+            {
+                continue;
+            }
+            pc.BoostConvert();
+        }
     }
 
     internal void RemoveTrackedAOE(GameObject gameObject)

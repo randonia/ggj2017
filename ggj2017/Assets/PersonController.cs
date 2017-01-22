@@ -123,4 +123,9 @@ public class PersonController : MonoBehaviour
     {
         TextGizmo.Instance.DrawText(transform.position, ConversionString);
     }
+
+    internal void BoostConvert()
+    {
+        Conversion = 1;
+    }
 }
