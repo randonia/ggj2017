@@ -18,7 +18,7 @@ public class PoliceBasicController : MonoBehaviour
     private CharacterController mController;
 
     private GameObject mDetainee;
-    public const float kPoliceSpeed = 15.0f;
+    public float kPoliceSpeed = 15.0f;
     private GameObject[] mDetainPoints;
     private Transform mCapturePoint;
     private GameObject mClosestDetainmentPoint;

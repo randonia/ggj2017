@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public GameObject G_AudioListener;
     private GameObject G_Target;
     public Vector3 TargetOffsetVector;
     public Vector3 CameraGroundVector;
@@ -21,6 +22,7 @@ public class CameraController : MonoBehaviour
             G_Target = GameObject.Find("Player");
         }
         Debug.Assert(G_Target != null);
+        Debug.Assert(G_AudioListener != null);
     }
 
     private void Update()
@@ -30,5 +32,6 @@ public class CameraController : MonoBehaviour
         Vector3 deltaPos = TargetPosition - transform.position;
         Debug.DrawRay(transform.position, deltaPos, Color.green);
         transform.Translate(deltaPos * Time.deltaTime * 3.0f);
+        G_AudioListener.transform.position = G_Target.transform.position;
     }
 }

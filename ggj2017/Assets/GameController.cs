@@ -17,7 +17,8 @@ public class GameController : MonoBehaviour
     private PlayerController mPlayer;
     public GameObject G_UI_Root;
     public GameObject UI_SprintSlider;
-
+    public GameObject G_AudioController;
+    private AudioController mAudio;
     private float mStartTime;
 
     public float StartTime { get { return mStartTime; } }
@@ -41,6 +42,9 @@ public class GameController : MonoBehaviour
         G_UI_Root.SetActive(true);
         mPlayer = G_Player.GetComponent<PlayerController>();
         Debug.Assert(mPlayer != null);
+        Debug.Assert(G_AudioController != null);
+        mAudio = G_AudioController.GetComponent<AudioController>();
+        Debug.Assert(mAudio != null);
         StartGame();
     }
 
@@ -50,6 +54,8 @@ public class GameController : MonoBehaviour
         mStartTime = Time.time;
         GameObject.Find("PoliceDispatcher").GetComponent<PoliceDispatcher>().running = true;
         GameObject.Find("PersonDispatcher").GetComponent<PersonDispatcher>().running = true;
+        mAudio.MixAudio(AudioController.AudioSourceID.LOOP_DRUMS, 0.75f);
+        mAudio.MixAudio(AudioController.AudioSourceID.LOOP_INSTRUMENTS, 0.75f);
     }
 
     // Update is called once per frame

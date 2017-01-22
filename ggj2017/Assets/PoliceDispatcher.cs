@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class PoliceDispatcher : MonoBehaviour
 {
-    private enum SpawnRates
+    public enum SpawnRates
     {
         LOW = 10,
         MEDIUM = 5,
-        HIGH = 3
+        HIGH = 3,
+        HYPE = 1
     }
 
     public GameObject P_BasicPolice;
     public GameObject P_PoliceVan;
+
+    public SpawnRates SpawnRate;
     public bool running = false;
+
     private iTweenPath[] mPaths;
     private float mLastSpawn;
     public string DebugText;
@@ -43,7 +47,7 @@ public class PoliceDispatcher : MonoBehaviour
             return;
         }
 
-        if (mLastSpawn + (int)SpawnRates.LOW < Time.time)
+        if (mLastSpawn + (int)SpawnRate < Time.time)
         {
             iTweenPath path = RandomPath();
             GameObject newThing = null;
