@@ -91,11 +91,21 @@ public class PoliceBasicController : MonoBehaviour
     private void DoCleanup()
     {
         // Delete target
-        Destroy(mDetainee);
+        if (mDetainee.CompareTag("Player"))
+        {
+            // Game end
+            GameObject gco = GameObject.Find("GameController");
+            GameController gc = gco.GetComponent<GameController>();
+            gc.EndGame();
+        }
+        else
+        {
+            Destroy(mDetainee);
+            Destroy(gameObject);
+        }
         // Message spawner??
 
         // Delete self
-        Destroy(gameObject);
     }
 
     private void MoveTick()

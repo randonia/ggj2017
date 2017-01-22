@@ -51,4 +51,12 @@ public class GameController : MonoBehaviour
     {
         mScore++;
     }
+
+    internal void EndGame()
+    {
+        State = GameState.EndGame;
+        // Disable the player
+        mPlayer.GameEnd();
+        // Disable everyone
+    }
 }

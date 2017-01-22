@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     {
         Wait,
         Playing,
-        Detained
+        Detained,
+        End
     }
 
     private PlayerState mState;
@@ -64,6 +65,11 @@ public class PlayerController : MonoBehaviour
         Debug.Assert(G_Firebreathing != null);
         mFirebreather = G_Firebreathing.GetComponent<ParticleSystem>();
         Debug.Assert(mFirebreather != null);
+    }
+
+    internal void GameEnd()
+    {
+        mState = PlayerState.End;
     }
 
     // Update is called once per frame
