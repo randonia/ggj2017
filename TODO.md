@@ -45,6 +45,7 @@ UI
 
 Foley
   + Necessary
+    - ~~menu item selected~~
     - ~~footsteps~~
     - ~~grunt when getting grabbed by cop~~
     - something that lets you know a police van is coming
