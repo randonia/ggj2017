@@ -119,7 +119,7 @@ public class PersonController : MonoBehaviour
         if (source.CompareTag("Player"))
         {
             Debug.Log("Converted by Player");
-            Conversion = Mathf.Min(Conversion + 0.25f, 1f);
+            Conversion = Mathf.Min(Conversion + 0.01f, 1f);
         }
         ConversionCheck();
     }

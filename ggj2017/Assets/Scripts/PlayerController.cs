@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
             DoBoost();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.J))
         {
             // Try to convert everyone in your immediate effect
             foreach (GameObject conversionTarget in mInfluencedPeople)
