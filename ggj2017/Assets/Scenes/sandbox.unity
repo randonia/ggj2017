@@ -1765,12 +1765,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1513649132749794, guid: 99cda6427c452384a9b71e7e90dfb8c2,
     type: 2}
   m_PrefabInternal: {fileID: 1630692018}
---- !u!114 &208129056 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114479448068895100, guid: 99cda6427c452384a9b71e7e90dfb8c2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1630692018}
-  m_Script: {fileID: 11500000, guid: 50e00eb5c107e6f47b3f147f08a18b87, type: 3}
 --- !u!82 &208129056
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10163,7 +10157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0 %
+  m_Text: 
 --- !u!222 &1095900908
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12793,7 +12787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -18592,7 +18586,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4078542466631240, guid: 4b35322c81fdfa74ba0ce51c29859b70, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4078542466631240, guid: 4b35322c81fdfa74ba0ce51c29859b70, type: 2}
       propertyPath: m_LocalPosition.y
@@ -18667,7 +18661,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4078542466631240, guid: 4b35322c81fdfa74ba0ce51c29859b70, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4078542466631240, guid: 4b35322c81fdfa74ba0ce51c29859b70, type: 2}
       propertyPath: m_LocalPosition.y
@@ -20255,7 +20249,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4078542466631240, guid: 4b35322c81fdfa74ba0ce51c29859b70, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.9
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4078542466631240, guid: 4b35322c81fdfa74ba0ce51c29859b70, type: 2}
       propertyPath: m_LocalPosition.y
@@ -20615,7 +20609,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4078542466631240, guid: 4b35322c81fdfa74ba0ce51c29859b70, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4078542466631240, guid: 4b35322c81fdfa74ba0ce51c29859b70, type: 2}
       propertyPath: m_LocalPosition.y
