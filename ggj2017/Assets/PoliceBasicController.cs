@@ -121,7 +121,7 @@ public class PoliceBasicController : MonoBehaviour
                 if (isPerson)
                 {
                     PersonController pc = other.GetComponent<PersonController>();
-                    if (pc == null || pc.Conversion < 1f)
+                    if (pc == null)
                     {
                         return;
                     }
@@ -155,12 +155,13 @@ public class PoliceBasicController : MonoBehaviour
                 break;
             case "Person":
                 PersonController pc = mDetainee.GetComponent<PersonController>();
-                if (pc.Conversion > 0)
+                if (pc != null)
                 {
                     pc.Detain(gameObject);
                 }
                 else
                 {
+                    Debug.Log("Error Could not get personcontroller for " + other.gameObject.name);
                     //foreach (Collider policeCollider in transform.GetComponentsInChildren<Collider>())
                     //{
                     //    foreach (Collider personCollider in other.transform.GetComponentsInChildren<Collider>())

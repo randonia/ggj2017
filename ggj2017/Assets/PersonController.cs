@@ -152,6 +152,8 @@ public class PersonController : MonoBehaviour
         {
             collider.enabled = false;
         }
+        GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<CharacterController>().enabled = false;
         mState = PersonState.Detained;
     }
 
