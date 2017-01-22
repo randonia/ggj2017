@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class GameController : MonoBehaviour
     public GameObject UI_SprintSlider;
 
     public float StartTime;
+    private int mScore;
+    public int Score { get { return mScore; } }
 
     public float GameTime { get { return Time.time - StartTime; } }
     public int GameSeconds { get { return ((int)GameTime) % 60; } }
@@ -42,5 +45,10 @@ public class GameController : MonoBehaviour
         Vector3 sprintSliderScale = UI_SprintSlider.transform.localScale;
         sprintSliderScale.x = Mathf.Max(0f, mPlayer.SprintVal);
         UI_SprintSlider.transform.localScale = sprintSliderScale;
+    }
+
+    internal void ScorePerson()
+    {
+        mScore++;
     }
 }

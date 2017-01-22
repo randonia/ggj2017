@@ -5,10 +5,10 @@ Gameplay
     - ~~Basic Police (straight line)~~
       - Add dust trail effect to police movement (particles)
     - RIOT Police (wall)
-    - SWAT Van (concentric circles
+    - SWAT Van (concentric circles)
     - ~~Police Capture people you've not completely converted~~
   + Player Interaction
-    - Converting People
+    - ~~Converting People~~
       - ~~Close quarters~~
       - ~~AOE Blast~~
     - Smokescreen?

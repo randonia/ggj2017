@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PersonController : MonoBehaviour
 {
@@ -42,7 +43,29 @@ public class PersonController : MonoBehaviour
             case PersonState.Idle:
                 IdleTick();
                 break;
+            case PersonState.Converted:
+                ConvertedTick();
+                break;
         }
+    }
+
+    private void ConvertedTick()
+    {
+        // Run toward the goal!
+        Debug.DrawLine(transform.position + Vector3.up, mTargetDestination, Color.green);
+        Vector3 remainder = mTargetDestination - transform.position;
+        if (remainder.sqrMagnitude < 5f)
+        {
+            Score();
+        }
+    }
+
+    private void Score()
+    {
+        GameObject gco = GameObject.Find("GameController");
+        GameController gc = gco.GetComponent<GameController>();
+        gc.ScorePerson();
+        Destroy(gameObject);
     }
 
     private void IdleTick()
@@ -101,8 +124,12 @@ public class PersonController : MonoBehaviour
             if (child.name == "model")
             {
                 child.GetComponent<MeshRenderer>().material = M_ConvertedPerson;
+                break;
             }
         }
+        mTargetDestination = GameObject.Find("ScoreGoal").transform.position;
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.SetDestination(mTargetDestination);
     }
 
     public void Detain(GameObject source)
@@ -121,7 +148,7 @@ public class PersonController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        TextGizmo.Instance.DrawText(transform.position, ConversionString);
+        TextGizmo.Instance.DrawText(transform.position, string.Format("{0}\n{1}", mState.ToString(), ConversionString));
     }
 
     internal void BoostConvert()
