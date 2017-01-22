@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController mCharController;
     private MegaphoneController mMegaphoneController;
     public GameObject mAOESphere;
+    public GameObject G_Firebreathing;
+    private ParticleSystem mFirebreather;
     private Vector3 mMovementDir;
     private Vector3 mLookDir;
     private const float kTurnSpeed = 0.05f;
@@ -56,6 +58,9 @@ public class PlayerController : MonoBehaviour
         mMegaphoneController.gameObject.SetActive(false);
         Debug.Assert(mMegaphoneController != null);
         Debug.Assert(mAOESphere != null);
+        Debug.Assert(G_Firebreathing != null);
+        mFirebreather = G_Firebreathing.GetComponent<ParticleSystem>();
+        Debug.Assert(mFirebreather != null);
     }
 
     // Update is called once per frame
@@ -184,6 +189,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.J))
         {
+            mFirebreather.Play();
             // Try to convert everyone in your immediate effect
             foreach (GameObject conversionTarget in mInfluencedPeople)
             {
@@ -193,6 +199,10 @@ public class PlayerController : MonoBehaviour
                     pc.BeginConvert(gameObject);
                 }
             }
+        }
+        else
+        {
+            mFirebreather.Stop();
         }
 
         #endregion "Combat"
