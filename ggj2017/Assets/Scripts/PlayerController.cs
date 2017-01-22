@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public const float kSprintRate = 0.01f;
     public const float kSprintRecovery = 0.003f;
-    public const float kBoostRechargeRate = 0.0001f;
+    public const float kBoostRechargeRate = 0.0005f;
 
     private float mBoostCharge = 0f;
     public bool BoostReady { get { return mBoostCharge == 1f; } }
@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(mLookDir);
         }
-        float moveSpeed = 10.0f;
+        float moveSpeed = (Input.GetKey(KeyCode.J)) ? 2.0f : 10.0f;
         if (Input.GetKey(KeyCode.LeftShift))
         {
             if (SprintVal > 0.0f)
@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
         {
             BoostReadyTick();
         }
-        if (Input.GetKeyDown(KeyCode.Space) && BoostReady)
+        if (Input.GetKeyDown(KeyCode.K) && BoostReady)
         {
             DoBoost();
         }
@@ -235,10 +235,6 @@ public class PlayerController : MonoBehaviour
 
         #region Regen
 
-        if (Input.GetKey(KeyCode.R))
-        {
-            mBoostCharge = 1f;
-        }
         mBoostCharge = Mathf.Min(1f, mBoostCharge + kBoostRechargeRate);
 
         #endregion Regen

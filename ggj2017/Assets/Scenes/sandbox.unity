@@ -14895,7 +14895,6 @@ MonoBehaviour:
     type: 2}
   SpawnRate: 10
   running: 0
-  DebugText: DEBUG
 --- !u!4 &1502911448
 Transform:
   m_ObjectHideFlags: 0
