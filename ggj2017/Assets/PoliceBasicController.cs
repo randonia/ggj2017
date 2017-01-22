@@ -104,10 +104,25 @@ public class PoliceBasicController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Person"))
+        if (mState != PoliceState.Detaining)
         {
-            Debug.Log("Police interaction. Detaining: " + other.gameObject.name);
-            Detain(other.gameObject);
+            if (other.CompareTag("Player") || other.CompareTag("Person"))
+            {
+                Debug.Log("Police interaction. Detaining: " + other.gameObject.name);
+                Detain(other.gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (mState == PoliceState.Detaining)
+        {
+            CharacterController cc = other.GetComponent<CharacterController>();
+            if (cc != null)
+            {
+                cc.SimpleMove(cc.transform.position - transform.position);
+            }
         }
     }
 
@@ -128,25 +143,25 @@ public class PoliceBasicController : MonoBehaviour
                 }
                 else
                 {
-                    foreach (Collider policeCollider in transform.GetComponentsInChildren<Collider>())
-                    {
-                        foreach (Collider personCollider in other.transform.GetComponentsInChildren<Collider>())
-                        {
-                            Physics.IgnoreCollision(policeCollider, personCollider);
-                        }
-                    }
-                    return;
+                    //foreach (Collider policeCollider in transform.GetComponentsInChildren<Collider>())
+                    //{
+                    //    foreach (Collider personCollider in other.transform.GetComponentsInChildren<Collider>())
+                    //    {
+                    //        Physics.IgnoreCollision(policeCollider, personCollider);
+                    //    }
+                    //}
+                    //return;
                 }
                 break;
         }
-        foreach (Collider collider in transform.GetComponentsInChildren<Collider>())
-        {
-            if (collider.GetType() == typeof(CharacterController))
-            {
-                continue;
-            }
-            collider.enabled = false;
-        }
+        //foreach (Collider collider in transform.GetComponentsInChildren<Collider>())
+        //{
+        //    if (collider.GetType() == typeof(CharacterController))
+        //    {
+        //        continue;
+        //    }
+        //    collider.enabled = false;
+        //}
         // Pick the closest detainment point
         mDetainPoints = GameObject.FindGameObjectsWithTag("DetainPoint");
         float minDist = float.MaxValue;

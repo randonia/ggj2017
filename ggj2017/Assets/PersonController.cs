@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PersonController : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class PersonController : MonoBehaviour
         Debug.Assert(M_NormalPerson != null);
         mCharacterController = GetComponent<CharacterController>();
         Debug.Assert(mCharacterController != null);
-        mMoveSpeed = Random.Range(1f, 3f);
+        mMoveSpeed = UnityEngine.Random.Range(1f, 3f);
     }
 
     // Update is called once per frame
@@ -46,6 +47,10 @@ public class PersonController : MonoBehaviour
 
     private void IdleTick()
     {
+        if (ConversionCheck())
+        {
+            return;
+        }
         if (mTargetDestination == Vector3.zero)
         {
             mTargetDestination = GetRandomPosition();
@@ -62,9 +67,20 @@ public class PersonController : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(dir);
     }
 
+    private bool ConversionCheck()
+    {
+        if (Conversion >= 1f && mState == PersonState.Idle)
+        {
+            // Begin Conversion if not converted
+            Convert();
+            return true;
+        }
+        return false;
+    }
+
     private Vector3 GetRandomPosition()
     {
-        return new Vector3(Random.Range(-25f, 25f), 0f, Random.Range(-25f, 25f));
+        return new Vector3(UnityEngine.Random.Range(-25f, 25f), 0f, UnityEngine.Random.Range(-25f, 25f));
     }
 
     public void BeginConvert(GameObject source)
@@ -74,14 +90,10 @@ public class PersonController : MonoBehaviour
             Debug.Log("Converted by Player");
             Conversion = Mathf.Min(Conversion + 0.25f, 1f);
         }
-        if (Conversion == 1f && mState == PersonState.Idle)
-        {
-            // Begin Conversion if not converted
-            Convert(source);
-        }
+        ConversionCheck();
     }
 
-    private void Convert(GameObject source)
+    private void Convert()
     {
         mState = PersonState.Converted;
         foreach (Transform child in GetComponentsInChildren<Transform>())
