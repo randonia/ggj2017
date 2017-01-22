@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 mMovementDir;
     private Vector3 mLookDir;
     private const float kTurnSpeed = 0.05f;
+    public AudioSource[] WalkingSounds;
+    private float mLastCharacterMoveTime = 0.0f;
 
     private float mSprint = 1;
     public const float kMaxSprint = 1;
@@ -126,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
         #endregion DEBUG
     }
-
+        
     private void PlayingTick()
     {
         #region Movement
@@ -148,6 +150,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             mMovementDir.x -= 1.0f;
+        }
+
+        if (mMovementDir.magnitude >= 0.1f) {
+            if (Time.time > mLastCharacterMoveTime + 0.35f) {
+                mLastCharacterMoveTime = Time.time;
+                // Play walkikng sound at random
+                WalkingSounds[new System.Random().Next(WalkingSounds.Length)].Play();
+            }
         }
 
         //moveVec.x = Input.GetAxis("Horizontal");
