@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PersonController : MonoBehaviour
 {
@@ -19,18 +17,54 @@ public class PersonController : MonoBehaviour
 
     public Material M_NormalPerson;
     public Material M_ConvertedPerson;
+    private Vector3 mTargetDestination;
+    private CharacterController mCharacterController;
+    private float mMoveSpeed;
 
     // Use this for initialization
     private void Start()
     {
+        mState = PersonState.Idle;
         Conversion = 0;
         Debug.Assert(M_ConvertedPerson != null);
         Debug.Assert(M_NormalPerson != null);
+        mCharacterController = GetComponent<CharacterController>();
+        Debug.Assert(mCharacterController != null);
+        mMoveSpeed = Random.Range(1f, 3f);
     }
 
     // Update is called once per frame
     private void Update()
     {
+        switch (mState)
+        {
+            case PersonState.Idle:
+                IdleTick();
+                break;
+        }
+    }
+
+    private void IdleTick()
+    {
+        if (mTargetDestination == Vector3.zero)
+        {
+            mTargetDestination = GetRandomPosition();
+        }
+        // Move towards the destination
+        Debug.DrawLine(transform.position, mTargetDestination, Color.green);
+        Vector3 dir = mTargetDestination - transform.position;
+        if (dir.sqrMagnitude < 4.0f)
+        {
+            mTargetDestination = GetRandomPosition();
+        }
+        dir.Normalize();
+        mCharacterController.SimpleMove(dir * mMoveSpeed);
+        transform.rotation = Quaternion.LookRotation(dir);
+    }
+
+    private Vector3 GetRandomPosition()
+    {
+        return new Vector3(Random.Range(-25f, 25f), 0f, Random.Range(-25f, 25f));
     }
 
     public void BeginConvert(GameObject source)

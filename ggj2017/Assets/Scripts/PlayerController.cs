@@ -209,7 +209,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Person"))
         {
-            Debug.Log("HI");
             mInfluencedPeople.Add(other.gameObject);
         }
     }
