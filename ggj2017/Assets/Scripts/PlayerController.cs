@@ -38,12 +38,15 @@ public class PlayerController : MonoBehaviour
     private GameObject G_InfluencedPerson;
     private List<GameObject> mInfluencedPeople;
     private List<GameObject> mAOEInfluencedPeople;
+    private Stack<GameObject> mCleanupStack;
 
     private void Start()
+
     {
         mState = PlayerState.Playing;
         mInfluencedPeople = new List<GameObject>();
         mAOEInfluencedPeople = new List<GameObject>();
+        mCleanupStack = new Stack<GameObject>();
         mMovementDir = new Vector3();
         mLookDir = new Vector3();
         mCharController = GetComponent<CharacterController>();
@@ -69,11 +72,46 @@ public class PlayerController : MonoBehaviour
 
         foreach (GameObject go in mInfluencedPeople)
         {
-            Debug.DrawLine(transform.position + Vector3.up, go.transform.position + Vector3.up, Color.green);
+            if (go == null)
+            {
+                mCleanupStack.Push(go);
+                continue;
+            }
+            PersonController pc = go.GetComponent<PersonController>();
+            if (pc == null || pc.isDetained)
+            {
+                mCleanupStack.Push(go);
+                continue;
+            }
+            Debug.DrawLine(transform.position, go.transform.position, Color.blue);
         }
+
+        // Clean up the list of influenced people
+        while (mCleanupStack.Count > 0)
+        {
+            mInfluencedPeople.Remove(mCleanupStack.Pop());
+        }
+
         foreach (GameObject go in mAOEInfluencedPeople)
         {
+            if (go == null)
+            {
+                mCleanupStack.Push(go);
+                continue;
+            }
+            PersonController pc = go.GetComponent<PersonController>();
+            if (pc == null || pc.isDetained)
+            {
+                mCleanupStack.Push(go);
+                continue;
+            }
             Debug.DrawLine(transform.position, go.transform.position, Color.blue);
+        }
+
+        // Clean up the list of AOE
+        while (mCleanupStack.Count > 0)
+        {
+            mInfluencedPeople.Remove(mCleanupStack.Pop());
         }
 
         #endregion DEBUG

@@ -12,6 +12,7 @@ public class PersonController : MonoBehaviour
     }
 
     private PersonState mState;
+    public bool isDetained { get { return mState == PersonState.Detained; } }
     public float Conversion { get { return mConversionFactor; } }
     public string ConversionString { get { return string.Format("{0:P0}", Conversion); } }
     private float mConversionFactor;
@@ -60,6 +61,16 @@ public class PersonController : MonoBehaviour
 
     public void Detain(GameObject source)
     {
+        // Kill off all the colliders for this
+        foreach (Collider collider in GetComponents<Collider>())
+        {
+            collider.enabled = false;
+        }
+        foreach (Collider collider in GetComponentsInChildren<Collider>())
+        {
+            collider.enabled = false;
+        }
+        mState = PersonState.Detained;
     }
 
     private void OnDrawGizmos()
