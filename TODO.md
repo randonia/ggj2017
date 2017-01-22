@@ -47,12 +47,11 @@ Foley
   + Necessary
     - ~~menu item selected~~
     - ~~footsteps~~
-    - ~~grunt when getting grabbed by cop~~
-    - something that lets you know a police van is coming
-    - something that lets you know that a police van is on screen
-    - person converted to your side
-    - funk bomb you drop which increases influence
-    - sound when you get caught
+    - ~~something that lets you know a police van is coming~~
+    - ~~something that lets you know that a police van is on screen~~
+    - ~~person converted to your side~~
+    - ~~funk bomb you drop which increases influence~~
+    - ~~sound when you get caught~~
     - wall of cops marching sound
   + Stretch goal
     - clubbing
