@@ -52,6 +52,7 @@ Foley
     - ~~person converted to your side~~
     - ~~funk bomb you drop which increases influence~~
     - ~~sound when you get caught~~
+    - ~~talking to someone~~
     - wall of cops marching sound
   + Stretch goal
     - clubbing
