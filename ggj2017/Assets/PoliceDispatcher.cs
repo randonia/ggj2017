@@ -11,10 +11,6 @@ public class PoliceDispatcher : MonoBehaviour
         HIGH = 3
     }
 
-    private enum SpawnType
-    {
-    }
-
     public GameObject P_BasicPolice;
     public GameObject P_PoliceVan;
 

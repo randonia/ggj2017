@@ -114,7 +114,7 @@ public class PoliceBasicController : MonoBehaviour
     {
         if (mState != PoliceState.Detaining)
         {
-            bool isPlayer = other.CompareTag("Player");
+            bool isPlayer = other.CompareTag("Player") && other.GetType() == typeof(CharacterController);
             bool isPerson = other.CompareTag("Person");
             if (isPerson || isPlayer)
             {
