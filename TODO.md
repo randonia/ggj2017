@@ -6,16 +6,16 @@ Gameplay
       - Add dust trail effect to police movement (particles)
     - RIOT Police (wall)
     - SWAT Van (concentric circles
-    - Police Capture people you've not completely converted
+    - ~~Police Capture people you've not completely converted~~
   + Player Interaction
     - Converting People
       - ~~Close quarters~~
-      - AOE Blast
+      - ~~AOE Blast~~
     - Smokescreen?
   + Person Interaction
-    - Base FSM
-    - Conversion process
-    - Interaction with Police
+    - ~~Base FSM~~
+    - ~~Conversion process~~
+    - ~~Interaction with Police~~
   + Game Loop interactions
     - Gate
       - Win
@@ -25,17 +25,17 @@ Gameplay
 Environment
   + Level design
   + Level Assets
-    - ~Player~
-    - ~Unconverted Other~
-    - ~Converted Other~
-    - ~Cop~
-    - ~Swat Van~
-    - ~Trees~
-    - ~Walls~
-    - ~Streets~
-    - ~Shrubs~
-    - ~Lightposts~
-    - ~Fences~
+    - ~~Player~~
+    - ~~Unconverted Other~~
+    - ~~Converted Other~~
+    - ~~Cop~~
+    - ~~Swat Van~~
+    - ~~Trees~~
+    - ~~Walls~~
+    - ~~Streets~~
+    - ~~Shrubs~~
+    - ~~Lightposts~~
+    - ~~Fences~~
     - Other stuff
 UI
   + Menu Flow
