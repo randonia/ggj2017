@@ -9,7 +9,8 @@ public class PoliceBasicController : MonoBehaviour
     {
         Idle,
         Moving,
-        Detaining
+        Detaining,
+        EndGame
     }
 
     private PoliceState mState;
@@ -97,6 +98,8 @@ public class PoliceBasicController : MonoBehaviour
             GameObject gco = GameObject.Find("GameController");
             GameController gc = gco.GetComponent<GameController>();
             gc.EndGame();
+            mState = PoliceState.EndGame;
+            mDetainee.GetComponent<PlayerController>().GameEnd();
         }
         else
         {

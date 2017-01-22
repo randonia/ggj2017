@@ -13,7 +13,7 @@ public class PoliceDispatcher : MonoBehaviour
 
     public GameObject P_BasicPolice;
     public GameObject P_PoliceVan;
-
+    public bool running = false;
     private iTweenPath[] mPaths;
     private float mLastSpawn;
     public string DebugText;
@@ -38,8 +38,11 @@ public class PoliceDispatcher : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // DEBUG
-        DebugText = string.Format("{0}\n{1}\n{2}\n{3}", mLastSpawn, Time.time, (int)SpawnRates.LOW, (mLastSpawn + (int)SpawnRates.LOW < Time.time));
+        if (!running)
+        {
+            return;
+        }
+
         if (mLastSpawn + (int)SpawnRates.LOW < Time.time)
         {
             iTweenPath path = RandomPath();

@@ -8,7 +8,7 @@ public class PersonDispatcher : MonoBehaviour
     private iTweenPath mSpawnPoints;
     private float mLastSpawnTime;
     public float SpawnRate = 5f;
-
+    public bool running = false;
     public GameObject P_Person;
 
     // Use this for initialization
@@ -22,6 +22,10 @@ public class PersonDispatcher : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (!running)
+        {
+            return;
+        }
         if (mLastSpawnTime + SpawnRate < Time.time)
         {
             SpawnPerson();
