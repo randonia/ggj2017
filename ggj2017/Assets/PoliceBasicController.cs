@@ -17,11 +17,13 @@ public class PoliceBasicController : MonoBehaviour
     private CharacterController mController;
 
     private GameObject mDetainee;
-    public const float kPoliceSpeed = 5.0f;
+    public const float kPoliceSpeed = 15.0f;
     private GameObject[] mDetainPoints;
     private Transform mCapturePoint;
     private GameObject mClosestDetainmentPoint;
     public Vector3 MoveDirection { get { return mMoveDirection; } set { this.mMoveDirection = value; } }
+
+    public Vector3 TargetDestination { get; internal set; }
 
     // Use this for initialization
     private void Start()
@@ -100,6 +102,12 @@ public class PoliceBasicController : MonoBehaviour
     {
         mController.SimpleMove(mMoveDirection * kPoliceSpeed);
         transform.rotation = Quaternion.LookRotation(mMoveDirection);
+        // See if we're near the end
+        if ((TargetDestination - transform.position).sqrMagnitude < 4f)
+        {
+            // Deleted
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

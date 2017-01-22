@@ -54,6 +54,11 @@ public class PersonController : MonoBehaviour
         // Run toward the goal!
         Debug.DrawLine(transform.position + Vector3.up, mTargetDestination, Color.green);
         Vector3 remainder = mTargetDestination - transform.position;
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        if (agent.path.corners.Length > 0)
+        {
+            transform.rotation = Quaternion.LookRotation(agent.path.corners[0] - transform.position);
+        }
         if (remainder.sqrMagnitude < 5f)
         {
             Score();
@@ -81,12 +86,12 @@ public class PersonController : MonoBehaviour
         // Move towards the destination
         Debug.DrawLine(transform.position, mTargetDestination, Color.green);
         Vector3 dir = mTargetDestination - transform.position;
-        if (dir.sqrMagnitude < 4.0f)
+        if (dir.sqrMagnitude < 5.0f)
         {
             mTargetDestination = GetRandomPosition();
         }
         dir.Normalize();
-        mCharacterController.SimpleMove(dir * mMoveSpeed);
+        GetComponent<NavMeshAgent>().SetDestination(mTargetDestination);
         transform.rotation = Quaternion.LookRotation(dir);
     }
 
@@ -103,7 +108,10 @@ public class PersonController : MonoBehaviour
 
     private Vector3 GetRandomPosition()
     {
-        return new Vector3(UnityEngine.Random.Range(-25f, 25f), 0f, UnityEngine.Random.Range(-25f, 25f));
+        // Pick a random target position based on BottomLeft and TopRight
+        Vector3 bottomLeft = GameObject.Find("BottomLeft").transform.position;
+        Vector3 topRight = GameObject.Find("TopRight").transform.position;
+        return new Vector3(UnityEngine.Random.Range(bottomLeft.x, topRight.x), 0f, UnityEngine.Random.Range(bottomLeft.z, topRight.z));
     }
 
     public void BeginConvert(GameObject source)
@@ -130,6 +138,7 @@ public class PersonController : MonoBehaviour
         mTargetDestination = GameObject.Find("ScoreGoal").transform.position;
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         agent.SetDestination(mTargetDestination);
+        agent.speed = 25f;
     }
 
     public void Detain(GameObject source)
