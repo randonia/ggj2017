@@ -7,7 +7,7 @@ public class MegaphoneController : MonoBehaviour
     private const float kDuration = 1f;
     private ParticleSystem mParticleSystem;
     private float mStartTime;
-    private bool mRunning;
+    public bool mRunning = false;
     public GameObject G_AOESphere;
 
     // Use this for initialization
@@ -15,7 +15,6 @@ public class MegaphoneController : MonoBehaviour
     {
         mParticleSystem = GetComponent<ParticleSystem>();
         Debug.Assert(mParticleSystem != null);
-        mRunning = false;
     }
 
     public void Begin()
@@ -23,7 +22,7 @@ public class MegaphoneController : MonoBehaviour
         mRunning = true;
         mStartTime = Time.time;
         gameObject.GetComponent<MeshRenderer>().enabled = true;
-        mParticleSystem.Play();
+        GetComponent<ParticleSystem>().Play();
     }
 
     // Update is called once per frame
@@ -34,7 +33,7 @@ public class MegaphoneController : MonoBehaviour
             transform.Rotate(Vector3.right, 12);
             if (mStartTime + kDuration < Time.time)
             {
-                mParticleSystem.Stop();
+                GetComponent<ParticleSystem>().Stop();
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
                 G_AOESphere.SetActive(false);
                 mRunning = false;

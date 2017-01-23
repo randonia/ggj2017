@@ -53,7 +53,6 @@ public class PoliceDispatcher : MonoBehaviour
             switch (path.pathName)
             {
                 case "basic":
-                    Debug.Log("Creating a new PoPo");
                     newThing = Instantiate(P_BasicPolice);
                     break;
             }

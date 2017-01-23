@@ -55,7 +55,7 @@ public class PersonController : MonoBehaviour
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         if (agent.path.corners.Length > 0)
         {
-            transform.rotation = Quaternion.LookRotation(agent.path.corners[0] - transform.position);
+            transform.rotation = Quaternion.LookRotation(remainder);
         }
         if (remainder.sqrMagnitude < 5f)
         {
@@ -116,7 +116,6 @@ public class PersonController : MonoBehaviour
     {
         if (source.CompareTag("Player"))
         {
-            Debug.Log("Converted by Player");
             Conversion = Mathf.Min(Conversion + 0.05f, 1f);
         }
         ConversionCheck();

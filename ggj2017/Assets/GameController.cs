@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
     public float GameTime { get { return mRunningTime - StartTime; } }
     public int GameSeconds { get { return ((int)GameTime) % 60; } }
     public int GameMinutes { get { return ((int)GameTime) / 60; } }
-    public string GameTimeString { get { return string.Format("{0}:{1:D2}", GameMinutes, (int)GameTime); } }
+    public string GameTimeString { get { return string.Format("{0}:{1:D2}", GameMinutes, GameSeconds); } }
 
     // Use this for initialization
     private void Start()

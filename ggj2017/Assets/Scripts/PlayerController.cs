@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public const float kSprintRate = 0.01f;
     public const float kSprintRecovery = 0.003f;
-    public const float kBoostRechargeRate = 0.0005f;
+    public const float kBoostRechargeRate = 0.0025f;
 
     private float mBoostCharge = 0f;
     public bool BoostReady { get { return mBoostCharge == 1f; } }
@@ -277,6 +277,7 @@ public class PlayerController : MonoBehaviour
     {
         BoostSounds[new System.Random().Next(BoostSounds.Length)].Play();
         mMegaphoneController.gameObject.SetActive(true);
+        Debug.Log("Do boost");
         mMegaphoneController.Begin();
         mMegaphoneController.G_AOESphere = mAOESphere;
         mBoostCharge = 0f;
