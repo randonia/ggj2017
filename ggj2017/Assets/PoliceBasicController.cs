@@ -99,6 +99,10 @@ public class PoliceBasicController : MonoBehaviour
             GameController gc = gco.GetComponent<GameController>();
             gc.EndGame();
             mState = PoliceState.EndGame;
+            foreach (AudioSource aa in GetComponents<AudioSource>())
+            {
+                aa.Stop();
+            }
             mDetainee.GetComponent<PlayerController>().GameEnd();
         }
         else

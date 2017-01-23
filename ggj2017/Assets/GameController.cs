@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class GameController : MonoBehaviour
     public GameObject UI_SprintSlider;
     public GameObject G_AudioController;
     public GameObject G_HUD;
+    public GameObject G_RestartMenu;
     public GameObject G_MainMenu;
     private AudioController mAudio;
     private float mStartTime;
@@ -34,6 +36,7 @@ public class GameController : MonoBehaviour
     private float mTimeLastChange;
     public float PhaseChangeRate = 20f;
     public int Score { get { return mScore; } }
+    public string ScoreString { get { return string.Format("{0}", Score); } }
 
     public float GameTime { get { return mRunningTime - StartTime; } }
     public int GameSeconds { get { return ((int)GameTime) % 60; } }
@@ -65,6 +68,7 @@ public class GameController : MonoBehaviour
     public void StartGame()
     {
         State = GameState.Playing;
+        mRunningTime = 0;
         mStartTime = Time.time;
         GameObject.Find("PoliceDispatcher").GetComponent<PoliceDispatcher>().running = true;
         GameObject.Find("PersonDispatcher").GetComponent<PersonDispatcher>().running = true;
@@ -73,6 +77,11 @@ public class GameController : MonoBehaviour
         G_HUD.SetActive(true);
         G_MainMenu.SetActive(false);
         mPlayer.BeginGame();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("sandbox");
     }
 
     // Update is called once per frame
@@ -144,5 +153,6 @@ public class GameController : MonoBehaviour
         // Disable everyone
         GameObject.Find("PoliceDispatcher").GetComponent<PoliceDispatcher>().running = false;
         GameObject.Find("PersonDispatcher").GetComponent<PersonDispatcher>().running = false;
+        G_RestartMenu.SetActive(true);
     }
 }
