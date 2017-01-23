@@ -13941,6 +13941,46 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c70d3409ad422b4dab7954e5e4281db, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1420213199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1420213200}
+  - component: {fileID: 1420213201}
+  m_Layer: 5
+  m_Name: RestartGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1420213200
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1420213199}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1453562429}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1420213201
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1420213199}
 --- !u!1001 &1423063176
 Prefab:
   m_ObjectHideFlags: 0
@@ -14416,6 +14456,7 @@ RectTransform:
   m_Children:
   - {fileID: 1801553562}
   - {fileID: 255252036}
+  - {fileID: 1420213200}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15209,7 +15250,7 @@ MonoBehaviour:
   pathName: basic
   pathColor: {r: 0.03529412, g: 0, b: 1, a: 1}
   nodes:
-  - {x: 57.803196, y: 0, z: 44.189312}
+  - {x: 55.730804, y: 0, z: 45.054924}
   - {x: -58.026375, y: 0, z: 60.704502}
   nodeCount: 2
   initialized: 1
@@ -15230,7 +15271,7 @@ MonoBehaviour:
   pathColor: {r: 0.03529412, g: 0, b: 1, a: 1}
   nodes:
   - {x: -62.909245, y: 0, z: 31.935575}
-  - {x: 52.712948, y: 0, z: 21.739279}
+  - {x: 53.857494, y: 0, z: 24.469923}
   nodeCount: 2
   initialized: 1
   initialName: New Path 2
@@ -15249,8 +15290,8 @@ MonoBehaviour:
   pathName: basic
   pathColor: {r: 0.03529412, g: 0, b: 1, a: 1}
   nodes:
-  - {x: 57.330143, y: 0, z: 44.632854}
-  - {x: -62.332096, y: 0, z: 31.358429}
+  - {x: 56.046963, y: 0, z: 40.028587}
+  - {x: -56.795864, y: 0, z: 37.57254}
   nodeCount: 2
   initialized: 1
   initialName: New Path 3
@@ -15266,11 +15307,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bffa8aa898b437183cd5617f7b5303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathName: New Path 5
+  pathName: basic
   pathColor: {r: 0.03529412, g: 0, b: 1, a: 1}
   nodes:
   - {x: -57, y: 0, z: 61}
-  - {x: 53, y: 0, z: 22}
+  - {x: 53.862984, y: 0, z: 27.845924}
   nodeCount: 2
   initialized: 1
   initialName: New Path 5
@@ -15289,7 +15330,7 @@ MonoBehaviour:
   pathName: basic
   pathColor: {r: 0.03529412, g: 0, b: 1, a: 1}
   nodes:
-  - {x: 57, y: 0, z: 44}
+  - {x: 56.598206, y: 0, z: 49.182156}
   - {x: -58, y: 0, z: 84}
   nodeCount: 2
   initialized: 1

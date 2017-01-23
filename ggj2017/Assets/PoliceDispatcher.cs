@@ -6,9 +6,9 @@ public class PoliceDispatcher : MonoBehaviour
 {
     public enum SpawnRates
     {
-        LOW = 10,
-        MEDIUM = 5,
-        HIGH = 3,
+        LOW = 5,
+        MEDIUM = 3,
+        HIGH = 2,
         HYPE = 1
     }
 
@@ -48,24 +48,28 @@ public class PoliceDispatcher : MonoBehaviour
 
         if (mLastSpawn + (int)SpawnRate < Time.time)
         {
-            iTweenPath path = RandomPath();
-            GameObject newThing = null;
-            switch (path.pathName)
+            int numToMake = (SpawnRate == SpawnRates.HYPE) ? 4 : 2;
+            for (int i = 0; i < numToMake; ++i)
             {
-                case "basic":
-                    newThing = Instantiate(P_BasicPolice);
-                    break;
+                iTweenPath path = RandomPath();
+                GameObject newThing = null;
+                switch (path.pathName)
+                {
+                    case "basic":
+                        newThing = Instantiate(P_BasicPolice);
+                        break;
+                }
+                if (newThing == null)
+                {
+                    Debug.Log("Error");
+                    return;
+                }
+                newThing.transform.position = path.nodes[0];
+                Vector3 dir = (path.nodes[1] - path.nodes[0]).normalized;
+                PoliceBasicController pbc = newThing.GetComponent<PoliceBasicController>();
+                pbc.MoveDirection = dir;
+                pbc.TargetDestination = path.nodes[1];
             }
-            if (newThing == null)
-            {
-                Debug.Log("Error");
-                return;
-            }
-            newThing.transform.position = path.nodes[0];
-            Vector3 dir = (path.nodes[1] - path.nodes[0]).normalized;
-            PoliceBasicController pbc = newThing.GetComponent<PoliceBasicController>();
-            pbc.MoveDirection = dir;
-            pbc.TargetDestination = path.nodes[1];
             mLastSpawn = Time.time;
         }
     }
