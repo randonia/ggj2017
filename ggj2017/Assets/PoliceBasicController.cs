@@ -153,7 +153,7 @@ public class PoliceBasicController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (mState == PoliceState.Detaining)
+        if (mState == PoliceState.Detaining && !other.CompareTag("Player"))
         {
             CharacterController cc = other.GetComponent<CharacterController>();
             if (cc != null)

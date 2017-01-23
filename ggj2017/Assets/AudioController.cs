@@ -9,13 +9,13 @@ public class AudioController : MonoBehaviour
         LOOP_DRUMS,
         LOOP_INSTRUMENTS,
         LOOP_HYPE,
-        LOOP_MENUINTRO,
         LOOP_MENU
     }
 
     public AudioSource Loop_Drums;
     public AudioSource Loop_Instrumental;
     public AudioSource Loop_HYPE;
+    public AudioSource Loop_IntroSong;
 
     // Use this for initialization
     private void Start()
@@ -23,6 +23,7 @@ public class AudioController : MonoBehaviour
         Debug.Assert(Loop_Drums != null);
         Debug.Assert(Loop_Instrumental != null);
         Debug.Assert(Loop_HYPE != null);
+        Debug.Assert(Loop_IntroSong != null);
     }
 
     public void MixAudio(AudioSourceID src, float level)
@@ -37,6 +38,9 @@ public class AudioController : MonoBehaviour
                 break;
             case AudioSourceID.LOOP_HYPE:
                 Loop_HYPE.volume = level;
+                break;
+            case AudioSourceID.LOOP_MENU:
+                Loop_IntroSong.volume = level;
                 break;
         }
     }

@@ -62,6 +62,7 @@ public class GameController : MonoBehaviour
         Debug.Assert(G_PersonDispatcher != null);
         mPersonDispatcher = G_PersonDispatcher.GetComponent<PersonDispatcher>();
         Debug.Assert(mPersonDispatcher != null);
+        mAudio.MixAudio(AudioController.AudioSourceID.LOOP_MENU, 1f);
         //StartGame();
     }
 
@@ -69,11 +70,12 @@ public class GameController : MonoBehaviour
     {
         State = GameState.Playing;
         mRunningTime = 0;
-        mStartTime = Time.time;
+        mStartTime = 0;
         GameObject.Find("PoliceDispatcher").GetComponent<PoliceDispatcher>().running = true;
         GameObject.Find("PersonDispatcher").GetComponent<PersonDispatcher>().running = true;
         mAudio.MixAudio(AudioController.AudioSourceID.LOOP_DRUMS, 0.75f);
         mAudio.MixAudio(AudioController.AudioSourceID.LOOP_INSTRUMENTS, 0.75f);
+        mAudio.MixAudio(AudioController.AudioSourceID.LOOP_MENU, 0f);
         G_HUD.SetActive(true);
         G_MainMenu.SetActive(false);
         mPlayer.BeginGame();
@@ -154,5 +156,6 @@ public class GameController : MonoBehaviour
         GameObject.Find("PoliceDispatcher").GetComponent<PoliceDispatcher>().running = false;
         GameObject.Find("PersonDispatcher").GetComponent<PersonDispatcher>().running = false;
         G_RestartMenu.SetActive(true);
+        G_HUD.SetActive(false);
     }
 }
