@@ -3,19 +3,21 @@
 # Instigator #
 _A game about political activism._
 
-Your goal is to make waves. Political waves.  
-The police aren't a big fan of your cause, so avoid them.  
-It's also hard to run way while talking to people, so do it fast, and do it carefully.  
+Your goal is to make waves. Political waves.
+The police aren't a big fan of your cause, so avoid them.
+Get boosted by converting people to your way of thinking.
+It's hard to run way while talking to people, so do it fast, and do it carefully.
 
 ## Controls ##
 * WASD - Move
+* Shift - Run
 * J - Convert people to your cause
 * K - Broadcast message (when charged)
 
 ## Contributors##
-Ryan Andonian - [@zambini845][1]  
-Merlyn Morgan-Graham - [@merlyndmg][2]  
-Seth Toles - [@sethtoles][3]
+Ryan Andonian (Code) - [@zambini845][1]
+Seth Toles (Music, Menu Art) - [@sethtoles][3]
+Merlyn Morgan-Graham (Models, SFX) - [@merlyndmg][2]
 
 ## 3rd Party Tools ##
 + [iTween][10]
