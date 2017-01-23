@@ -3,6 +3,8 @@
 # Instigator #
 _A game about political activism._
 
+![][100]
+
 Your goal is to make waves. Political waves.
 The police aren't a big fan of your cause, so avoid them.
 Get boosted by converting people to your way of thinking.
@@ -38,3 +40,4 @@ Merlyn Morgan-Graham (Models, SFX) - [@merlyndmg][2]
 [13]: https://www.blender.org/
 [14]: http://www.bfxr.net/
 [15]: http://www.apple.com/logic-pro/
+[100]: https://raw.githubusercontent.com/randonia/ggj2017/master/screenshots/game_header.png
