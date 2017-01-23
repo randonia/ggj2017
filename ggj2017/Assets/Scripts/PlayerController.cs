@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public const float kSprintRate = 0.01f;
     public const float kSprintRecovery = 0.003f;
-    public const float kBoostRechargeRate = 0.0025f;
+    public const float kBoostRechargeRate = 0.00025f;
 
     private float mBoostCharge = 0f;
     public bool BoostReady { get { return mBoostCharge == 1f; } }
