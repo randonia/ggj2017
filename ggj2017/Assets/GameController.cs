@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
     public GameObject G_UI_Root;
     public GameObject UI_SprintSlider;
     public GameObject G_AudioController;
+    public GameObject G_HUD;
+    public GameObject G_MainMenu;
     private AudioController mAudio;
     private float mStartTime;
     public GameObject G_PoliceDispatcher;
@@ -57,10 +59,10 @@ public class GameController : MonoBehaviour
         Debug.Assert(G_PersonDispatcher != null);
         mPersonDispatcher = G_PersonDispatcher.GetComponent<PersonDispatcher>();
         Debug.Assert(mPersonDispatcher != null);
-        StartGame();
+        //StartGame();
     }
 
-    private void StartGame()
+    public void StartGame()
     {
         State = GameState.Playing;
         mStartTime = Time.time;
@@ -68,6 +70,9 @@ public class GameController : MonoBehaviour
         GameObject.Find("PersonDispatcher").GetComponent<PersonDispatcher>().running = true;
         mAudio.MixAudio(AudioController.AudioSourceID.LOOP_DRUMS, 0.75f);
         mAudio.MixAudio(AudioController.AudioSourceID.LOOP_INSTRUMENTS, 0.75f);
+        G_HUD.SetActive(true);
+        G_MainMenu.SetActive(false);
+        mPlayer.BeginGame();
     }
 
     // Update is called once per frame

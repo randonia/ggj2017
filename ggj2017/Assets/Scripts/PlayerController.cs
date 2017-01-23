@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
 
     {
-        mState = PlayerState.Playing;
+        mState = PlayerState.Wait;
         mInfluencedPeople = new List<GameObject>();
         mAOEInfluencedPeople = new List<GameObject>();
         mCleanupStack = new Stack<GameObject>();
@@ -65,6 +65,11 @@ public class PlayerController : MonoBehaviour
         Debug.Assert(G_Firebreathing != null);
         mFirebreather = G_Firebreathing.GetComponent<ParticleSystem>();
         Debug.Assert(mFirebreather != null);
+    }
+
+    public void BeginGame()
+    {
+        mState = PlayerState.Playing;
     }
 
     internal void GameEnd()
