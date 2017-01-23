@@ -157,7 +157,6 @@ public class PersonController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        TextGizmo.Instance.DrawText(transform.position, string.Format("{0}\n{1}", mState.ToString(), ConversionString));
     }
 
     internal void BoostConvert()

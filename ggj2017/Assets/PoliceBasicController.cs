@@ -214,7 +214,6 @@ public class PoliceBasicController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        TextGizmo.Instance.DrawText(transform.position, string.Format("{0}", mState.ToString()));
     }
 
     public void StartMoving(Vector3 direction)

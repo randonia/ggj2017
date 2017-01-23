@@ -19,7 +19,6 @@ public class DetainPointController : MonoBehaviour
         BoxCollider collider = GetComponent<BoxCollider>();
         if (collider != null)
         {
-            TextGizmo.Instance.DrawText(transform.position + Vector3.up, "Detain Point");
             Gizmos.DrawWireCube(collider.transform.position, collider.size);
         }
     }
