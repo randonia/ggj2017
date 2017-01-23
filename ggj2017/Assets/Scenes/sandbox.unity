@@ -16197,7 +16197,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4682892415028550, guid: 99cda6427c452384a9b71e7e90dfb8c2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -13.33
       objectReference: {fileID: 0}
     - target: {fileID: 4682892415028550, guid: 99cda6427c452384a9b71e7e90dfb8c2, type: 2}
       propertyPath: m_LocalPosition.y
@@ -16205,7 +16205,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4682892415028550, guid: 99cda6427c452384a9b71e7e90dfb8c2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 4
+      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 4682892415028550, guid: 99cda6427c452384a9b71e7e90dfb8c2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -17785,18 +17785,6 @@ Prefab:
     - target: {fileID: 4983727323562354, guid: 2c70d3409ad422b4dab7954e5e4281db, type: 2}
       propertyPath: m_RootOrder
       value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 4983727323562354, guid: 2c70d3409ad422b4dab7954e5e4281db, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 20.461
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383318758913950, guid: 2c70d3409ad422b4dab7954e5e4281db, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383318758913950, guid: 2c70d3409ad422b4dab7954e5e4281db, type: 2}
-      propertyPath: m_NavMeshLayer
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c70d3409ad422b4dab7954e5e4281db, type: 2}
