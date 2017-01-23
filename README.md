@@ -30,7 +30,7 @@ Merlyn Morgan-Graham (Models, SFX) - [@merlyndmg][2]
 + [Logic Pro][15]
 
 
-[0]: https://ldjam.com/
+[0]: http://globalgamejam.org/2017/games/instigator
 [1]: https://twitter.com/Zambini845
 [2]: https://twitter.com/merlyndmg
 [3]: https://twitter.com/sethtoles
